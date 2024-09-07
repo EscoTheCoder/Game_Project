@@ -255,6 +255,7 @@ void Level::checkCollisions() {
             if (it->getTexture() == "Gold-Medal.png") {
                 it = m_coins.erase(it);
                 m_game_paused = true;
+                graphics::stopMessageLoop();
                 return;
             }
 
