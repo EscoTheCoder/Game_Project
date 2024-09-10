@@ -1,74 +1,74 @@
 #include "Hearts.h"
 #include "GameState.h"
+#include "box.h"
 #include "util.h"
-#include <sgg/graphics.h>
 #include <iostream>
+#include <sgg/graphics.h>
 
-Hearts::Hearts(float pos_x, float pos_y, float width, float height, const std::string& texture)
-    : GameObject("Heart"), m_pos_x(pos_x), m_pos_y(pos_y), m_width(width), m_height(height), m_texture(texture) {
+Hearts::Hearts(float pos_x, float pos_y, float width, float height, const std::string& texture) :
+    GameObject("Coin"), Box(pos_x, pos_y, width, height), m_texture(texture) {
 }
 
-Hearts::Hearts(Hearts&& other) noexcept
-    : GameObject(std::move(other)),
-    m_pos_x(other.m_pos_x), m_pos_y(other.m_pos_y),
-    m_width(other.m_width), m_height(other.m_height),
-    m_texture(std::move(other.m_texture)),
-    m_brush(std::move(other.m_brush)) {
+Hearts::Hearts(Hearts&& other) noexcept:
+    GameObject(std::move(other)), Box(std::move(other)),
+    m_hearts_brush(std::move(other.m_hearts_brush)),
+    m_hearts_brush_debug(std::move(other.m_hearts_brush_debug)),
+    m_texture(std::move(other.m_texture)) {
+    // Reset other's state if necessary
 }
 
 Hearts& Hearts::operator=(Hearts&& other) noexcept {
     if (this != &other) {
         GameObject::operator=(std::move(other));
-        m_pos_x = other.m_pos_x;
-        m_pos_y = other.m_pos_y;
-        m_width = other.m_width;
-        m_height = other.m_height;
+        Box::operator=(std::move(other));
+        m_hearts_brush = std::move(other.m_hearts_brush);
+        m_hearts_brush_debug = std::move(other.m_hearts_brush_debug);
         m_texture = std::move(other.m_texture);
-        m_brush = std::move(other.m_brush);
+        // Reset other's state if necessary
     }
     return *this;
 }
 
 void Hearts::init() {
-    m_brush.outline_opacity = 0.0f;  // No outline
-    std::string full_texture_path = GameState::getInstance()->getFullAssetPath(m_texture);
-    m_brush.texture = full_texture_path;  // Set texture from asset path
+    m_hearts_brush.outline_opacity = 0.0f;
+    m_hearts_brush.texture = m_state->getFullAssetPath(m_texture);
 
-    // Debug output to check if the texture path is correct
-    std::cout << "Initializing Heart with texture: " << full_texture_path << std::endl;
+    m_hearts_brush_debug.fill_opacity = 0.1f;
+    SETCOLOR(m_hearts_brush_debug.fill_color, 1.0f, 0.0f, 0.0f);
+    SETCOLOR(m_hearts_brush_debug.outline_color, 1.0f, 0.0f, 0.0f);
+
+    // Αποθηκεύουμε την αρχική θέση κατά την αρχικοποίηση
+    m_initial_pos_x = m_pos_x;
+    m_initial_pos_y = m_pos_y;
+}
+
+void Hearts::update(float dt) {
+    move(dt);
 }
 
 void Hearts::draw() {
-    // Debug output to check if draw() is being called
-    std::cout << "Drawing Heart at position (" << m_pos_x << ", " << m_pos_y << ")" << std::endl;
+    graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_hearts_brush);
 
-    if (!m_brush.texture.empty()) {
-        graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_brush);
-    }
-    else {
-        // If texture is empty, draw a placeholder rectangle
-        graphics::Brush placeholder_brush;
-        SETCOLOR(placeholder_brush.fill_color, 1.0f, 0.0f, 0.0f);
-        //placeholder_brush.fill_color = graphics::RED;  // Use a solid color for debugging
-        graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, placeholder_brush);
+    if (m_state->m_debugging) {
+        graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_hearts_brush_debug);
     }
 }
 
-void Hearts::setPosition(float pos_x, float pos_y) {
-    m_pos_x = pos_x;
-    m_pos_y = pos_y;
+void Hearts::reset() {
+    // Επαναφορά της θέσης του σωλήνα στην αρχική κατάσταση
+    m_pos_x = m_initial_pos_x;
+    m_pos_y = m_initial_pos_y;
+}
+
+void Hearts::move(float dt) {
+    m_pos_x -= m_hearts_speed * (dt / 1000.0f);
 }
 
 void Hearts::setTexture(const std::string& texture) {
     m_texture = texture;
-    std::string full_texture_path = GameState::getInstance()->getFullAssetPath(m_texture);
-    m_brush.texture = full_texture_path;  // Update brush texture from asset path
-
-    // Debug output to check if the texture path is updated
-    std::cout << "Updated Heart texture to: " << full_texture_path << std::endl;
+    m_hearts_brush.texture = m_state->getFullAssetPath(m_texture);
 }
 
-void Hearts::setSize(float width, float height) {
-    m_width = width;
-    m_height = height;
+std::string Hearts::getTexture() {
+    return m_texture;
 }

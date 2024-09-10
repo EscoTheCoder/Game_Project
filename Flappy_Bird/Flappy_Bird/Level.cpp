@@ -29,18 +29,7 @@ void Level::init() {
     // Initialize background
     m_brush_background.outline_opacity = 0.0f;
     m_brush_background.texture = m_state->getFullAssetPath("background.png");
-
-    // Initialize hearts representing lives
-    m_hearts.clear();
-    float heart_pos_x = m_state->get_CanvasWidth() - 50.0f;
-    float heart_pos_y = 50.0f;
-    for (int i = 0; i < m_lives; ++i) {
-        m_hearts.emplace_back(heart_pos_x - (i * 40.0f), heart_pos_y, 30.0f, 30.0f, "heart.png");
-    }
-
-    for (auto& heart : m_hearts) {
-        heart.init();
-    }
+    
 
     // Initialize static and dynamic objects
     for (auto p_gob : m_static_objects) {
@@ -53,6 +42,7 @@ void Level::init() {
             p_gob->init();
         }
     }
+
 
     // Initialize pipes with positions and textures
     m_pipes.emplace_back(5.0f, 5.50f, 1.0f, 3.0f, "pipe_up.png");
@@ -127,6 +117,20 @@ void Level::init() {
     for (auto& coin : m_coins) {
         coin.init();
     }
+
+    // Initialize hearts representing lives
+    float heart_pos_x = 1.0f; // Positioned near the left edge of the canvas
+    float heart_pos_y = m_state->get_CanvasHeight() - 1.0f; // Positioned near the top edge of the canvas
+    float heart_spacing = 0.35f; // Space between hearts
+
+    m_hearts.clear();
+    for (int i = 0; i < m_lives; ++i) {
+        m_hearts.emplace_back(heart_pos_x + i * (0.3f + heart_spacing), heart_pos_y, 0.3f, 0.3f, "heart.png"); // Example size of 0.3x0.3
+    }
+
+    for (auto& heart : m_hearts) {
+        heart.init();
+    }
 }
 
 void Level::update(float dt) {
@@ -182,24 +186,30 @@ void Level::draw() {
         coin.draw();
     }
 
-    // Draw hearts (lives)
+    // Draw hearts (lives) on the right side of the canvas
     for (auto& heart : m_hearts) {
         heart.draw();
     }
 }
 
+
 void Level::loseLife() {
     if (m_lives > 0) {
         m_lives--;
-        m_hearts.pop_back(); // Remove a heart from the list
+
+        // Remove a heart visually by popping the last heart from the list
+        m_hearts.pop_back();
+
         if (m_lives == 0) {
             graphics::stopMessageLoop(); // Stop the game if no lives left
         }
     }
 }
 
+
 void Level::resetLevel() {
-    // Reset player
+    // Reset player and other objects (existing code)
+
     Player* player = m_state->get_Player();
     player->reset();
 
@@ -220,10 +230,12 @@ void Level::resetLevel() {
 
     // Reset hearts
     m_hearts.clear();
-    float heart_pos_x = m_state->get_CanvasWidth() - 50.0f;
-    float heart_pos_y = 50.0f;
+    float heart_pos_x = 1.0f; // Positioned near the left edge of the canvas
+    float heart_pos_y = m_state->get_CanvasHeight() - 1.0f; // Positioned near the top edge of the canvas
+    float heart_spacing = 0.35f; // Space between hearts
+
     for (int i = 0; i < m_lives; ++i) {
-        m_hearts.emplace_back(heart_pos_x - (i * 40.0f), heart_pos_y, 30.0f, 30.0f, "heart.png");
+        m_hearts.emplace_back(heart_pos_x + i * (0.3f + heart_spacing), heart_pos_y, 0.3f, 0.3f, "heart.png");
     }
 
     for (auto& heart : m_hearts) {
@@ -233,10 +245,16 @@ void Level::resetLevel() {
     m_game_paused = false;
 }
 
+
 void Level::checkCollisions() {
     if (m_game_paused) return;
 
     Player* player = m_state->get_Player();
+    if (!player) {
+        std::cerr << "Player not initialized!" << std::endl;
+        return;
+    }
+
 
     for (auto& pipe : m_pipes) {
         if (player->intersect(pipe)) {

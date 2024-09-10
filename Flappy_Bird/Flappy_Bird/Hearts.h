@@ -1,17 +1,21 @@
 #pragma once
 
+#include <iostream>
 #include "GameObject.h"
+#include "Box.h"
 #include <sgg/graphics.h>
 #include <string>
 
-class Hearts : public GameObject {
+class Hearts : public GameObject, public Box {
 private:
-    float m_pos_x;
-    float m_pos_y;
-    float m_width;
-    float m_height;
+    graphics::Brush m_hearts_brush;
+    graphics::Brush m_hearts_brush_debug;
+
     std::string m_texture;
-    graphics::Brush m_brush;
+    const float m_hearts_speed = 5.0f;
+
+    float m_initial_pos_x;
+    float m_initial_pos_y;
 
 public:
     Hearts(float pos_x, float pos_y, float width, float height, const std::string& texture);
@@ -22,9 +26,12 @@ public:
     Hearts(Hearts&& other) noexcept;
     Hearts& operator=(Hearts&& other) noexcept;
 
+    void update(float dt) override;
     void init() override;
     void draw() override;
-    void setPosition(float pos_x, float pos_y);
     void setTexture(const std::string& texture);
-    void setSize(float width, float height);
+    std::string getTexture();
+    void move(float dt);
+
+    void reset();
 };
