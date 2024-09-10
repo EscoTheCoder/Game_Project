@@ -2,47 +2,47 @@
 
 #include "sgg/graphics.h"
 #include <string>
-
-using namespace std;
+#include <memory> // For smart pointers
+#include <utility> // For std::pair
 
 class GameState {
-
 private:
-    string m_asset_path = "assets\\";
+    std::string m_asset_path = "assets\\";
 
     float m_canvas_width = 6.0f;
     float m_canvas_height = 6.0f;
 
-    static GameState* m_unique_instance;
+    // Using smart pointers to manage Player and Level memory
+    std::unique_ptr<class Player> m_player = nullptr;
+    std::unique_ptr<class Level> m_current_level = nullptr;
 
+    // Private constructor for Singleton
     GameState();
 
-    class Player* m_player = nullptr;
-    class Level* m_current_level = nullptr;
-
 public:
-    float get_CanvasWidth();
-    float get_CanvasHeight();
-
     float m_global_offset_x = 0.0f;
     float m_global_offset_y = 0.0f;
     bool m_debugging = false;
 
+    // Singleton getInstance method
+    static GameState* getInstance();
+
+    // Basic functionality
     void init();
     void draw();
     void update(float dt);
 
-    static GameState* getInstance();
-    ~GameState();
+    // Canvas dimensions
+    std::pair<float, float> getCanvasDimensions() const;
 
-    string getAssetDir();
-    string getFullAssetPath(const string& asset);
+    // Asset path management
+    std::string getAssetDir() const;
+    std::string getFullAssetPath(const std::string& asset) const;
 
-    class Player* get_Player() {
-        return m_player;
-    }
+    // Player getter and setter
+    class Player* get_Player() const;
+    void set_Player(class Player* player);
 
-    void set_Player(class Player* m_player) {
-        this->m_player = m_player;
-    }
+    // Destructor is now default, as unique_ptr will handle memory cleanup
+    ~GameState() = default;
 };

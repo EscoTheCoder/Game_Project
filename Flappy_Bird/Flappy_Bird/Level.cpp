@@ -16,6 +16,7 @@ Level::~Level() {
             delete p_gob;
         }
     }
+
     for (auto p_gob : m_dynamic_objects) {
         if (p_gob) {
             delete p_gob;
@@ -25,10 +26,17 @@ Level::~Level() {
 
 void Level::init() {
     m_lives = 3; // Reset to 3 lives
+    m_game_over = false; // Reset game-over flag
+    m_game_over_timer = 0.0f; // Reset game-over timer
 
     // Initialize background
     m_brush_background.outline_opacity = 0.0f;
     m_brush_background.texture = m_state->getFullAssetPath("background.png");
+
+    // Initialize ending background
+    m_brush_ending_background.outline_opacity = 0.0f;
+    m_brush_ending_background.texture = m_state->getFullAssetPath("gameover.png");
+
     
 
     // Initialize static and dynamic objects
@@ -118,10 +126,10 @@ void Level::init() {
         coin.init();
     }
 
-    // Initialize hearts representing lives
-    float heart_pos_x = 1.0f; // Positioned near the left edge of the canvas
-    float heart_pos_y = m_state->get_CanvasHeight() - 1.0f; // Positioned near the top edge of the canvas
-    float heart_spacing = 0.35f; // Space between hearts
+    // Position the hearts at the top-left corner
+    float heart_pos_x = 0.3f;  // Positioned near the left edge of the canvas
+    float heart_pos_y = 0.3f;  // Positioned near the top edge of the canvas
+    float heart_spacing = 0.05f; // Space between hearts
 
     m_hearts.clear();
     for (int i = 0; i < m_lives; ++i) {
@@ -133,6 +141,8 @@ void Level::init() {
     }
 }
 
+
+
 void Level::update(float dt) {
     if (m_game_paused) {
         if (graphics::getKeyState(graphics::SCANCODE_SPACE)) {
@@ -140,6 +150,16 @@ void Level::update(float dt) {
         }
         return;
     }
+
+    // If the game is over, start the timer to delay the ending
+    if (m_game_over) {
+        m_game_over_timer += dt;
+        if (m_game_over_timer > 2000.0f) { // Wait for 2 seconds (2000ms)
+            graphics::stopMessageLoop();
+        }
+        return;
+    }
+
 
     // Update player
     if (m_state->get_Player()->isActive()) {
@@ -162,33 +182,44 @@ void Level::update(float dt) {
 }
 
 void Level::draw() {
-    float w = m_state->get_CanvasWidth();
-    float h = m_state->get_CanvasHeight();
+    float w = m_state->getCanvasDimensions().first;
+    float h = m_state->getCanvasDimensions().second;
 
     float offset_x = m_state->m_global_offset_x / 2.0f + w / 2.0f;
     float offset_y = m_state->m_global_offset_y / 2.0f + h / 2.0f;
 
+    // Draw the ending background with smaller dimensions
+    float ending_bg_width = w * 0.8f; // 70% of the canvas width
+    float ending_bg_height = h * 0.3f; // 70% of the canvas height
+
     // Draw background
     graphics::drawRect(offset_x, offset_y, w, h, m_brush_background);
 
-    // Draw player
-    if (m_state->get_Player()->isActive()) {
-        m_state->get_Player()->draw();
-    }
+    if (!m_game_over) {
+        // Draw player
+        if (m_state->get_Player()->isActive()) {
+            m_state->get_Player()->draw();
+        }
 
-    // Draw pipes
-    for (auto& pipe : m_pipes) {
-        pipe.draw();
-    }
+        // Draw pipes
+        for (auto& pipe : m_pipes) {
+            pipe.draw();
+        }
 
-    // Draw coins
-    for (auto& coin : m_coins) {
-        coin.draw();
-    }
+        // Draw coins
+        for (auto& coin : m_coins) {
+            coin.draw();
+        }
 
-    // Draw hearts (lives) on the right side of the canvas
-    for (auto& heart : m_hearts) {
-        heart.draw();
+        // Draw hearts (lives) on the right side of the canvas
+        for (auto& heart : m_hearts) {
+            heart.draw();
+        }
+    }
+    else {
+        // If the game is over, draw the ending background
+        //m_brush_background.outline_opacity = 0.0f;
+        graphics::drawRect(offset_x, offset_y, ending_bg_width, ending_bg_height, m_brush_ending_background);
     }
 }
 
@@ -201,7 +232,7 @@ void Level::loseLife() {
         m_hearts.pop_back();
 
         if (m_lives == 0) {
-            graphics::stopMessageLoop(); // Stop the game if no lives left
+            m_game_over = true;
         }
     }
 }
@@ -228,14 +259,16 @@ void Level::resetLevel() {
         coin.init();
     }
 
-    // Reset hearts
-    m_hearts.clear();
-    float heart_pos_x = 1.0f; // Positioned near the left edge of the canvas
-    float heart_pos_y = m_state->get_CanvasHeight() - 1.0f; // Positioned near the top edge of the canvas
-    float heart_spacing = 0.35f; // Space between hearts
+    // Reset hearts' position at the top-left corner
+    m_hearts.clear(); // Clears but doesn’t free memory
+    //m_hearts.reserve(3); // Reserves space for 3 elements
+
+    float heart_pos_x = 0.3f;  // Positioned near the left edge of the canvas
+    float heart_pos_y = 0.3f;  // Positioned near the top edge of the canvas
+    float heart_spacing = 0.05f; // Space between hearts
 
     for (int i = 0; i < m_lives; ++i) {
-        m_hearts.emplace_back(heart_pos_x + i * (0.3f + heart_spacing), heart_pos_y, 0.3f, 0.3f, "heart.png");
+        m_hearts.emplace_back(heart_pos_x + i * (0.3f + heart_spacing), heart_pos_y, 0.3f, 0.3f, "heart.png"); // Example size of 0.3x0.3
     }
 
     for (auto& heart : m_hearts) {
@@ -247,7 +280,7 @@ void Level::resetLevel() {
 
 
 void Level::checkCollisions() {
-    if (m_game_paused) return;
+    if (m_game_paused || m_game_over) return;
 
     Player* player = m_state->get_Player();
     if (!player) {
@@ -272,8 +305,7 @@ void Level::checkCollisions() {
 
             if (it->getTexture() == "Gold-Medal.png") {
                 it = m_coins.erase(it);
-                m_game_paused = true;
-                graphics::stopMessageLoop();
+                m_game_over = true;
                 return;
             }
 
@@ -284,7 +316,7 @@ void Level::checkCollisions() {
         }
     }
 
-    float floorY = m_state->get_CanvasHeight() - 0.1f;
+    float floorY = m_state->getCanvasDimensions().second - 0.1f;
     if (player->m_pos_y > floorY) {
         graphics::playSound(m_state->getFullAssetPath("hit.wav"), 0.5f);
         loseLife();

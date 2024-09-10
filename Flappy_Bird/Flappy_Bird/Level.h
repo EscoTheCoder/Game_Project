@@ -10,7 +10,9 @@
 
 class Level : public GameObject {
 private:
-    graphics::Brush m_brush_background;  // Brush for the background
+    graphics::Brush m_brush_background;  // Brush for the game background
+    graphics::Brush m_brush_ending_background;  // Brush for the ending background
+
     std::vector<Pipe> m_pipes;           // List of pipes in the level
     std::vector<Coin> m_coins;           // List of coins in the level
     std::vector<Hearts> m_hearts;        // List of heart images representing lives
@@ -18,6 +20,9 @@ private:
     std::vector<GameObject*> m_dynamic_objects;  // List of dynamic game objects
 
     bool m_game_paused = false; // Pause flag
+    bool m_game_over = false;   // Game over flag
+    float m_game_over_timer = 0.0f;  // Timer to delay game stop after game over
+
     int m_lives; // Variable to store lives
 
     void checkCollisions();   // Method to check for collisions

@@ -12,8 +12,8 @@ Player::Player(const std::string& name) :
 }
 
 void Player::init() {
-    m_pos_x = m_state->get_CanvasWidth() / 4.0f;  // Starting position (left side)
-    m_pos_y = m_state->get_CanvasHeight() / 2.0f;
+    m_pos_x = m_state->getCanvasDimensions().first / 4.0f;  // Starting position (left side)
+    m_pos_y = m_state->getCanvasDimensions().second / 2.0f;
     m_velocity_y = 0.0f;
 
     m_initial_pos_x = m_pos_x;
@@ -52,8 +52,8 @@ void Player::movePlayer(float dt) {
     m_pos_y += m_velocity_y * delta_time;
 
     // Prevent falling below the ground (bottom of the screen)
-    if (m_pos_y + m_height / 2.0f > m_state->get_CanvasHeight()) {
-        m_pos_y = m_state->get_CanvasHeight() - m_height / 2.0f;
+    if (m_pos_y + m_height / 2.0f > m_state->getCanvasDimensions().second) {
+        m_pos_y = m_state->getCanvasDimensions().second - m_height / 2.0f;
         m_velocity_y = 0.0f;
     }
 

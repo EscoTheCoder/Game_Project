@@ -3,17 +3,31 @@
 #include "Player.h"
 #include <thread>
 #include <chrono>
+#include <algorithm> // For std::max, std::min
+
 using namespace std;
 
+GameState::GameState() {
+    // Constructor remains empty for now
+}
+
+GameState* GameState::getInstance() {
+    // Thread-safe Singleton pattern in C++11
+    static GameState instance;
+    return &instance;
+}
+
 void GameState::init() {
-    m_current_level = new Level("Level0");
+    // Initialize the level and player using smart pointers
+    m_current_level = std::make_unique<Level>("Level0");
     m_current_level->init();
 
-    m_player = new Player("Bird");
+    m_player = std::make_unique<Player>("Bird");
     m_player->init();
 }
 
 void GameState::draw() {
+    // Draw the level
     if (m_current_level) {
         m_current_level->draw();
     }
@@ -34,39 +48,23 @@ void GameState::update(float dt) {
     m_debugging = graphics::getKeyState(graphics::SCANCODE_0);
 }
 
-GameState::GameState() {
+std::pair<float, float> GameState::getCanvasDimensions() const {
+    return { m_canvas_width, m_canvas_height };
 }
 
-float GameState::get_CanvasWidth() {
-    return m_canvas_width;
-}
-
-float GameState::get_CanvasHeight() {
-    return m_canvas_height;
-}
-
-GameState* GameState::getInstance() {
-    if (m_unique_instance == nullptr) {
-        m_unique_instance = new GameState();
-    }
-    return m_unique_instance;
-}
-
-GameState::~GameState() {
-    if (m_player) {
-        delete m_player;
-    }
-    if (m_current_level) {
-        delete m_current_level;
-    }
-}
-
-string GameState::getAssetDir() {
+std::string GameState::getAssetDir() const {
     return m_asset_path;
 }
 
-string GameState::getFullAssetPath(const string& asset) {
+std::string GameState::getFullAssetPath(const std::string& asset) const {
     return m_asset_path + asset;
 }
 
-GameState* GameState::m_unique_instance = nullptr;
+class Player* GameState::get_Player() const {
+    return m_player.get();
+}
+
+void GameState::set_Player(class Player* player) {
+    // Use unique_ptr's reset to change the player
+    m_player.reset(player);
+}

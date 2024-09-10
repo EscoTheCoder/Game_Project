@@ -6,8 +6,9 @@
 #include <sgg/graphics.h>
 
 Hearts::Hearts(float pos_x, float pos_y, float width, float height, const std::string& texture) :
-    GameObject("Coin"), Box(pos_x, pos_y, width, height), m_texture(texture) {
+    GameObject("Heart"), Box(pos_x, pos_y, width, height), m_texture(texture) {
 }
+
 
 Hearts::Hearts(Hearts&& other) noexcept:
     GameObject(std::move(other)), Box(std::move(other)),

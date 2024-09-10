@@ -31,8 +31,8 @@ int main(int argc, char** argv) {
 	graphics::setDrawFunction(draw);
 	graphics::setUpdateFunction(update);
 
-	graphics::setCanvasSize(GameState::getInstance()->get_CanvasWidth(),
-		GameState::getInstance()->get_CanvasHeight());
+	graphics::setCanvasSize(GameState::getInstance()->getCanvasDimensions().first,
+		GameState::getInstance()->getCanvasDimensions().second);
 
 	graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
 
