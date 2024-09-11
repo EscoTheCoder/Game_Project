@@ -40,8 +40,11 @@ void Player::movePlayer(float dt) {
     float delta_time = dt / 1000.0f; // Convert milliseconds to seconds
 
     // Jumping logic
-    if (graphics::getKeyState(graphics::SCANCODE_SPACE)) {
-        //graphics::playSound(m_state->getFullAssetPath("wing.wav"), 0.5f);
+    graphics::MouseState mouse;
+    graphics::getMouseState(mouse);
+
+    if (graphics::getKeyState(graphics::SCANCODE_SPACE) || mouse.button_left_pressed) {
+        graphics::playSound(m_state->getFullAssetPath("wing.wav"), 0.5f);
         m_velocity_y = -m_jump_force; // Apply jump force
     }
          

@@ -1,5 +1,6 @@
 #include "Level.h"
 #include "GameState.h"
+#include "Coin_Score.h"
 #include "Player.h"
 #include <sgg/graphics.h>
 #include <iostream>
@@ -26,6 +27,7 @@ Level::~Level() {
 
 void Level::init() {
     m_lives = 3; // Reset to 3 lives
+    m_coins_for_score = 3;
     m_game_over = false; // Reset game-over flag
     m_game_over_timer = 0.0f; // Reset game-over timer
 
@@ -139,6 +141,20 @@ void Level::init() {
     for (auto& heart : m_hearts) {
         heart.init();
     }
+
+    // Position the coins at the top-left corner
+    float coin_score_pos_x = 0.3f;  // Positioned near the left edge of the canvas
+    float coin_score_pos_y = 0.7f;  // Positioned near the top edge of the canvas
+    float coin_score_spacing = 0.05f; // Space between hearts
+
+    m_coin_score.clear();
+    for (int i = 0; i < m_lives; ++i) {
+        m_coin_score.emplace_back(coin_score_pos_x + i * (0.3f + coin_score_spacing), coin_score_pos_y, 0.3f, 0.3f, "coin_for_score.png"); // Example size of 0.3x0.3
+    }
+
+    for (auto& coin_score : m_coin_score) {
+        coin_score.init();
+    }
 }
 
 
@@ -153,45 +169,25 @@ void Level::update(float dt) {
     }
 }
 
-void Level::draw() {
-
-    if (status == STATUS_START) {
-        drawStartScreen();
-    }
-    else {
-        drawLevelScreen();
-    }
-    
-}
-
-
-void Level::loseLife() {
-    if (m_lives > 0) {
-        m_lives--;
-
-        // Remove a heart visually by popping the last heart from the list
-        m_hearts.pop_back();
-
-        if (m_lives == 0) {
-            m_game_over = true;
-        }
-    }
-}
-
 void Level::updateStartScreen() {
 
     graphics::MouseState mouse;
     graphics::getMouseState(mouse);
 
-    if(graphics::getKeyState(graphics::SCANCODE_SPACE) || mouse.button_left_pressed) {
+    if (graphics::getKeyState(graphics::SCANCODE_SPACE) || mouse.button_left_pressed) {
 
         status = STATUS_PLAYING;
     }
 }
 
+
 void Level::updateLevelScreen(float dt) {
+
     if (m_game_paused) {
-        if (graphics::getKeyState(graphics::SCANCODE_SPACE)) {
+        graphics::MouseState mouse;
+        graphics::getMouseState(mouse);
+
+        if (graphics::getKeyState(graphics::SCANCODE_SPACE) || mouse.button_left_pressed) {
             resetLevel();
         }
         return;
@@ -222,10 +218,29 @@ void Level::updateLevelScreen(float dt) {
         coin.update(dt);
     }
 
+    //// Update coins_score
+    //for (auto& coins_score : m_coin_score) {
+    //    coins_score.update(dt);
+    //}
+
     checkCollisions();
 
     GameObject::update(dt);
 }
+
+
+
+void Level::draw() {
+
+    if (status == STATUS_START) {
+        drawStartScreen();
+    }
+    else {
+        drawLevelScreen();
+    }
+    
+}
+
 
 void Level::drawStartScreen() {
     graphics::Brush br;
@@ -273,9 +288,14 @@ void Level::drawLevelScreen() {
             coin.draw();
         }
 
-        // Draw hearts (lives) on the right side of the canvas
+        // Draw hearts (lives) on the left side of the canvas
         for (auto& heart : m_hearts) {
             heart.draw();
+        }
+
+        // Draw coin (score) on the left side of the canvas
+        for (auto& coin_score : m_coin_score) {
+            coin_score.draw();
         }
     }
     else {
@@ -284,6 +304,34 @@ void Level::drawLevelScreen() {
         graphics::drawRect(offset_x, offset_y, ending_bg_width, ending_bg_height, m_brush_ending_background);
     }
 }
+
+
+void Level::loseLife() {
+    if (m_lives > 0) {
+        m_lives--;
+
+        // Remove a heart visually by popping the last heart from the list
+        m_hearts.pop_back();
+
+        if (m_lives == 0) {
+            m_game_over = true;
+        }
+    }
+}
+
+void Level::loseCoin() {
+    if (m_coins_for_score > 0) {
+        m_coins_for_score--;
+
+        // Remove a coin visually by popping the last coin from the list
+        m_coin_score.pop_back();
+
+        if (m_coins_for_score == 0) {
+            m_game_over = true;
+        }
+    }
+}
+
 
 
 void Level::resetLevel() {
@@ -309,7 +357,6 @@ void Level::resetLevel() {
 
     // Reset hearts' position at the top-left corner
     m_hearts.clear(); // Clears but doesn’t free memory
-    //m_hearts.reserve(3); // Reserves space for 3 elements
 
     float heart_pos_x = 0.3f;  // Positioned near the left edge of the canvas
     float heart_pos_y = 0.3f;  // Positioned near the top edge of the canvas
@@ -321,6 +368,22 @@ void Level::resetLevel() {
 
     for (auto& heart : m_hearts) {
         heart.init();
+    }
+
+    // Reset coin_score's position at the top-left corner
+    m_coin_score.clear(); // Clears but doesn’t free memory
+
+    // Position the coins at the top-left corner
+    float coin_score_pos_x = 0.3f;  // Positioned near the left edge of the canvas
+    float coin_score_pos_y = 0.7f;  // Positioned near the top edge of the canvas
+    float coin_score_spacing = 0.05f; // Space between hearts
+
+    for (int i = 0; i < 3; ++i) { // <3 gia na einai panta 3 ta coins_for_score meta to reset
+        m_coin_score.emplace_back(coin_score_pos_x + i * (0.3f + coin_score_spacing), coin_score_pos_y, 0.3f, 0.3f, "coin_for_score.png"); // Example size of 0.3x0.3
+    }
+
+    for (auto& coin_score : m_coin_score) {
+        coin_score.init();
     }
 
     m_game_paused = false;
@@ -347,9 +410,11 @@ void Level::checkCollisions() {
     }
 
     auto it = m_coins.begin();
+    int i = 0;
     while (it != m_coins.end()) {
         if (player->intersect(*it)) {
             graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);
+            loseCoin();
 
             if (it->getTexture() == "Gold-Medal.png") {
                 it = m_coins.erase(it);
