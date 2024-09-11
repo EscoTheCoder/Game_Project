@@ -144,6 +144,52 @@ void Level::init() {
 
 
 void Level::update(float dt) {
+
+    if (status == STATUS_START) {
+        updateStartScreen();
+    }
+    else {
+        updateLevelScreen(dt);
+    }
+}
+
+void Level::draw() {
+
+    if (status == STATUS_START) {
+        drawStartScreen();
+    }
+    else {
+        drawLevelScreen();
+    }
+    
+}
+
+
+void Level::loseLife() {
+    if (m_lives > 0) {
+        m_lives--;
+
+        // Remove a heart visually by popping the last heart from the list
+        m_hearts.pop_back();
+
+        if (m_lives == 0) {
+            m_game_over = true;
+        }
+    }
+}
+
+void Level::updateStartScreen() {
+
+    graphics::MouseState mouse;
+    graphics::getMouseState(mouse);
+
+    if(graphics::getKeyState(graphics::SCANCODE_SPACE) || mouse.button_left_pressed) {
+
+        status = STATUS_PLAYING;
+    }
+}
+
+void Level::updateLevelScreen(float dt) {
     if (m_game_paused) {
         if (graphics::getKeyState(graphics::SCANCODE_SPACE)) {
             resetLevel();
@@ -181,7 +227,23 @@ void Level::update(float dt) {
     GameObject::update(dt);
 }
 
-void Level::draw() {
+void Level::drawStartScreen() {
+    graphics::Brush br;
+
+    float w = m_state->getCanvasDimensions().first;
+    float h = m_state->getCanvasDimensions().second;
+
+    float offset_x = m_state->m_global_offset_x / 2.0f + w / 2.0f;
+    float offset_y = m_state->m_global_offset_y / 2.0f + h / 2.0f;
+
+    br.outline_opacity = 0.0f;
+    br.texture = m_state->getFullAssetPath("message.png");
+    // Draw background
+    graphics::drawRect(offset_x, offset_y, w, h, br);
+
+}
+
+void Level::drawLevelScreen() {
     float w = m_state->getCanvasDimensions().first;
     float h = m_state->getCanvasDimensions().second;
 
@@ -220,20 +282,6 @@ void Level::draw() {
         // If the game is over, draw the ending background
         //m_brush_background.outline_opacity = 0.0f;
         graphics::drawRect(offset_x, offset_y, ending_bg_width, ending_bg_height, m_brush_ending_background);
-    }
-}
-
-
-void Level::loseLife() {
-    if (m_lives > 0) {
-        m_lives--;
-
-        // Remove a heart visually by popping the last heart from the list
-        m_hearts.pop_back();
-
-        if (m_lives == 0) {
-            m_game_over = true;
-        }
     }
 }
 

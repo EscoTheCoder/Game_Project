@@ -28,6 +28,18 @@ private:
     void checkCollisions();   // Method to check for collisions
     void loseLife();          // Method to handle losing a life
 
+    typedef enum { STATUS_START, STATUS_PLAYING} status_t;
+
+    status_t status = STATUS_START;
+
+    void updateStartScreen();
+    void updateLevelScreen(float dt);
+
+    void drawStartScreen();
+    void drawLevelScreen();
+
+
+
 public:
     int sum_coins = 0;
 
