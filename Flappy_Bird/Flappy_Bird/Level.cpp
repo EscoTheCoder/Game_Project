@@ -55,6 +55,8 @@ void Level::init() {
 
 
     // Initialize pipes with positions and textures
+
+
     m_pipes.emplace_back(5.0f, 5.50f, 1.0f, 3.0f, "pipe_up.png");
     m_pipes.emplace_back(5.0f, 1.0f, 1.0f, 3.0f, "pipe_down.png");
 
@@ -115,6 +117,8 @@ void Level::init() {
     m_pipes.emplace_back(62.0f, 5.50f, 1.0f, 3.0f, "pipe_up.png");
     m_pipes.emplace_back(62.0f, 1.0f, 1.0f, 3.0f, "pipe_down.png");
 
+
+
     for (auto& pipe : m_pipes) {
         pipe.init();
     }
@@ -123,6 +127,7 @@ void Level::init() {
     m_coins.emplace_back(5.0f, 3.2f, 1.0f, 1.0f, "Bronze-Medal.png");
     m_coins.emplace_back(32.0f, 3.2f, 1.0f, 1.0f, "Silver-Medal.png");
     m_coins.emplace_back(62.0f, 3.2f, 1.0f, 1.0f, "Gold-Medal.png");
+    m_coins.emplace_back(75.6f, 3.20f, 10.0f, 20.0f, "finish_line.png");
 
     for (auto& coin : m_coins) {
         coin.init();
@@ -326,9 +331,9 @@ void Level::loseCoin() {
         // Remove a coin visually by popping the last coin from the list
         m_coin_score.pop_back();
 
-        if (m_coins_for_score == 0) {
+        /*if (m_coins_for_score == 0) {
             m_game_over = true;
-        }
+        }*/
     }
 }
 
@@ -350,6 +355,7 @@ void Level::resetLevel() {
     m_coins.emplace_back(5.0f, 3.2f, 1.0f, 1.0f, "Bronze-Medal.png");
     m_coins.emplace_back(32.0f, 3.2f, 1.0f, 1.0f, "Silver-Medal.png");
     m_coins.emplace_back(62.0f, 3.2f, 1.0f, 1.0f, "Gold-Medal.png");
+    m_coins.emplace_back(75.6f, 3.20f, 10.0f, 3.0f, "finish_line.png");
 
     for (auto& coin : m_coins) {
         coin.init();
@@ -399,7 +405,7 @@ void Level::checkCollisions() {
         return;
     }
 
-
+    // Check pipe collisions
     for (auto& pipe : m_pipes) {
         if (player->intersect(pipe)) {
             graphics::playSound(m_state->getFullAssetPath("hit.wav"), 0.5f);
@@ -409,26 +415,28 @@ void Level::checkCollisions() {
         }
     }
 
+    // Check coin collisions
     auto it = m_coins.begin();
-    int i = 0;
     while (it != m_coins.end()) {
         if (player->intersect(*it)) {
-            graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);
-            loseCoin();
-
-            if (it->getTexture() == "Gold-Medal.png") {
-                it = m_coins.erase(it);
-                m_game_over = true;
+            if (it->getTexture() == "finish_line.png") {
+                graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);
+                it = m_coins.erase(it); // Remove the finish line
+                m_game_over = true; // End the game when the finish line is hit
                 return;
             }
-
-            it = m_coins.erase(it);
+            else {
+                graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);
+                loseCoin(); // Decrease the coin count
+                it = m_coins.erase(it); // Remove the collected coin
+            }
         }
         else {
             ++it;
         }
     }
 
+    // Check if the player hits the ground
     float floorY = m_state->getCanvasDimensions().second - 0.1f;
     if (player->m_pos_y > floorY) {
         graphics::playSound(m_state->getFullAssetPath("hit.wav"), 0.5f);
