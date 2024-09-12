@@ -44,7 +44,7 @@ void Player::movePlayer(float dt) {
     graphics::getMouseState(mouse);
 
     if (graphics::getKeyState(graphics::SCANCODE_SPACE) || mouse.button_left_pressed) {
-        graphics::playSound(m_state->getFullAssetPath("wing.wav"), 0.5f);
+        //graphics::playSound(m_state->getFullAssetPath("wing.wav"), 0.5f);
         m_velocity_y = -m_jump_force; // Apply jump force
     }
          

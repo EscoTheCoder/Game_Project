@@ -117,6 +117,7 @@ void Level::init() {
     m_pipes.emplace_back(62.0f, 5.50f, 1.0f, 3.0f, "pipe_up.png");
     m_pipes.emplace_back(62.0f, 1.0f, 1.0f, 3.0f, "pipe_down.png");
 
+  
 
 
     for (auto& pipe : m_pipes) {
@@ -127,7 +128,8 @@ void Level::init() {
     m_coins.emplace_back(5.0f, 3.2f, 1.0f, 1.0f, "Bronze-Medal.png");
     m_coins.emplace_back(32.0f, 3.2f, 1.0f, 1.0f, "Silver-Medal.png");
     m_coins.emplace_back(62.0f, 3.2f, 1.0f, 1.0f, "Gold-Medal.png");
-    m_coins.emplace_back(75.6f, 3.20f, 10.0f, 20.0f, "finish_line.png");
+    m_coins.emplace_back(75.0f, 3.2f, 2.0f, 5.0f, "do_not_stop_image.png");
+    m_coins.emplace_back(85.0f, 2.5f, 2.0f, 15.0f, "finish_line.png");
 
     for (auto& coin : m_coins) {
         coin.init();
@@ -175,6 +177,8 @@ void Level::update(float dt) {
 }
 
 void Level::updateStartScreen() {
+
+    //graphics::playSound(m_state->getFullAssetPath("arapis.wav"), 0.009f);
 
     graphics::MouseState mouse;
     graphics::getMouseState(mouse);
@@ -424,6 +428,10 @@ void Level::checkCollisions() {
                 it = m_coins.erase(it); // Remove the finish line
                 m_game_over = true; // End the game when the finish line is hit
                 return;
+            }
+            else if (it->getTexture() == "do_not_stop_image.png") {
+                graphics::playSound(m_state->getFullAssetPath("lets_go.wav"), 0.5f);
+                it = m_coins.erase(it); // Remove the collected coin
             }
             else {
                 graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);
