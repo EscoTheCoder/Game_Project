@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Coin_Score.cpp" />
+    <ClCompile Include="Extras.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Hearts.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="box.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Coin_Score.h" />
+    <ClInclude Include="Extras.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Hearts.h" />

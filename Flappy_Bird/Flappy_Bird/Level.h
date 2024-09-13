@@ -7,7 +7,10 @@
 #include "Pipe.h"
 #include "Player.h"
 #include "Hearts.h"
+#include "Extras.h"
 #include <sgg/graphics.h>
+
+
 
 class Level : public GameObject {
 private:
@@ -16,6 +19,8 @@ private:
 
     std::vector<Pipe> m_pipes;           // List of pipes in the level
     std::vector<Coin> m_coins;           // List of coins in the level
+    std::vector<Extras> m_extras;
+
     std::vector<Hearts> m_hearts;        // List of heart images representing lives
     
     std::vector<Coin_Score> m_coin_score; // List of coins images representing scores

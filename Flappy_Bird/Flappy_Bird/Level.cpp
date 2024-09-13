@@ -128,11 +128,16 @@ void Level::init() {
     m_coins.emplace_back(5.0f, 3.2f, 1.0f, 1.0f, "Bronze-Medal.png");
     m_coins.emplace_back(32.0f, 3.2f, 1.0f, 1.0f, "Silver-Medal.png");
     m_coins.emplace_back(62.0f, 3.2f, 1.0f, 1.0f, "Gold-Medal.png");
-    m_coins.emplace_back(75.0f, 3.2f, 2.0f, 5.0f, "do_not_stop_image.png");
-    m_coins.emplace_back(85.0f, 2.5f, 2.0f, 15.0f, "finish_line.png");
 
     for (auto& coin : m_coins) {
         coin.init();
+    }
+
+    //m_extras.emplace_back(75.0f, 3.2f, 2.0f, 5.0f, "do_not_stop_image.png");
+    m_extras.emplace_back(75.0f, 2.5f, 2.0f, 15.0f, "finish_line.png");
+
+    for (auto& extras : m_extras) {
+        extras.init();
     }
 
     // Position the hearts at the top-left corner
@@ -227,6 +232,11 @@ void Level::updateLevelScreen(float dt) {
         coin.update(dt);
     }
 
+    for (auto& extras : m_extras) {
+        extras.update(dt);
+    }
+
+
     //// Update coins_score
     //for (auto& coins_score : m_coin_score) {
     //    coins_score.update(dt);
@@ -297,6 +307,11 @@ void Level::drawLevelScreen() {
             coin.draw();
         }
 
+        // Draw extras
+        for (auto& extras : m_extras) {
+            extras.draw();
+        }
+
         // Draw hearts (lives) on the left side of the canvas
         for (auto& heart : m_hearts) {
             heart.draw();
@@ -359,10 +374,16 @@ void Level::resetLevel() {
     m_coins.emplace_back(5.0f, 3.2f, 1.0f, 1.0f, "Bronze-Medal.png");
     m_coins.emplace_back(32.0f, 3.2f, 1.0f, 1.0f, "Silver-Medal.png");
     m_coins.emplace_back(62.0f, 3.2f, 1.0f, 1.0f, "Gold-Medal.png");
-    m_coins.emplace_back(75.6f, 3.20f, 10.0f, 3.0f, "finish_line.png");
 
     for (auto& coin : m_coins) {
         coin.init();
+    }
+
+    // Reset extras
+    //m_extras.emplace_back(75.0f, 3.2f, 2.0f, 5.0f, "do_not_stop_image.png");
+    m_extras.emplace_back(75.0f, 2.5f, 2.0f, 15.0f, "finish_line.png");
+    for (auto& extras : m_extras) {
+        extras.init();
     }
 
     // Reset hearts' position at the top-left corner
@@ -423,26 +444,52 @@ void Level::checkCollisions() {
     auto it = m_coins.begin();
     while (it != m_coins.end()) {
         if (player->intersect(*it)) {
-            if (it->getTexture() == "finish_line.png") {
-                graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);
-                it = m_coins.erase(it); // Remove the finish line
-                m_game_over = true; // End the game when the finish line is hit
-                return;
-            }
-            else if (it->getTexture() == "do_not_stop_image.png") {
-                graphics::playSound(m_state->getFullAssetPath("lets_go.wav"), 0.5f);
-                it = m_coins.erase(it); // Remove the collected coin
-            }
-            else {
+            //if (it->getTexture() == "finish_line.png") {
+            //    graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);
+            //    it = m_coins.erase(it); // Remove the finish line
+            //    m_game_over = true; // End the game when the finish line is hit
+            //    return;
+            //}
+            //else if (it->getTexture() == "do_not_stop_image.png") {
+            //    graphics::playSound(m_state->getFullAssetPath("lets_go.wav"), 0.5f);
+            //    it = m_coins.erase(it); // Remove the collected coin
+            //}
+            
                 graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);
                 loseCoin(); // Decrease the coin count
                 it = m_coins.erase(it); // Remove the collected coin
-            }
+            
         }
         else {
             ++it;
         }
     }
+
+    // Check extras collisions
+    cout << m_extras.size()<<endl;
+    auto itt = m_extras.begin();
+    while (itt != m_extras.end()) {
+        if (player->intersect(*itt)) {
+            //if (itt->getTexture() == "do_not_stop_image.png") {
+            //    graphics::playSound(m_state->getFullAssetPath("lets_go.wav"), 0.5f);
+            //    itt = m_extras.erase(itt); // Remove the collected extra
+            //}
+            if (itt->getTexture() == "finish_line.png") {
+                graphics::playSound(m_state->getFullAssetPath("lets_go.wav"), 0.5f);
+                itt = m_extras.erase(itt); // Remove the finish line
+                m_game_over = true; // End the game when the finish line is hit
+                return;
+            }
+            graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);
+            loseCoin(); // Decrease the coin count
+            itt = m_extras.erase(itt); // Remove the collected extra
+
+        }
+        else {
+            ++itt;
+        }
+    }
+
 
     // Check if the player hits the ground
     float floorY = m_state->getCanvasDimensions().second - 0.1f;
