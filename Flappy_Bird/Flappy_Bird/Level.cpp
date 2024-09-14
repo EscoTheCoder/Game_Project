@@ -455,9 +455,9 @@ void Level::checkCollisions() {
             //    it = m_coins.erase(it); // Remove the collected coin
             //}
             
-                graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);
-                loseCoin(); // Decrease the coin count
-                it = m_coins.erase(it); // Remove the collected coin
+            graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);
+            loseCoin(); // Decrease the coin count
+            it = m_coins.erase(it); // Remove the collected coin
             
         }
         else {
@@ -466,14 +466,10 @@ void Level::checkCollisions() {
     }
 
     // Check extras collisions
-    cout << m_extras.size()<<endl;
+    //cout << m_extras.size()<<endl;
     auto itt = m_extras.begin();
     while (itt != m_extras.end()) {
         if (player->intersect(*itt)) {
-            //if (itt->getTexture() == "do_not_stop_image.png") {
-            //    graphics::playSound(m_state->getFullAssetPath("lets_go.wav"), 0.5f);
-            //    itt = m_extras.erase(itt); // Remove the collected extra
-            //}
             if (itt->getTexture() == "finish_line.png") {
                 graphics::playSound(m_state->getFullAssetPath("lets_go.wav"), 0.5f);
                 itt = m_extras.erase(itt); // Remove the finish line
