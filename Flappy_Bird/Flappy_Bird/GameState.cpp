@@ -24,6 +24,8 @@ void GameState::init() {
 
     m_player = std::make_unique<Player>("Bird");
     m_player->init();
+
+    graphics::preloadBitmaps(getAssetDir());
 }
 
 void GameState::draw() {

@@ -1,4 +1,4 @@
-#include "Player.h"
+ï»¿#include "Player.h"
 #include "GameState.h"
 #include "util.h"
 #include <sgg/graphics.h>
@@ -29,11 +29,11 @@ void Player::init() {
 }
 
 void Player::reset() {
-    // ÅðáíáöïñÜ ôçò èÝóçò ôïõ ðáßêôç óôçí áñ÷éêÞ êáôÜóôáóç
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     m_pos_x = m_initial_pos_x;
     m_pos_y = m_initial_pos_y;
-    m_velocity_y = 0.0f; // ÅðáíáöïñÜ ôçò ôá÷ýôçôáò
-    // Ìðïñåßôå íá åðáíáöÝñåôå Üëëåò ðáñáìÝôñïõò, üðùò ç åðéôÜ÷õíóç, áí ÷ñåéÜæåôáé
+    m_velocity_y = 0.0f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }
 
 void Player::movePlayer(float dt) {
@@ -47,7 +47,7 @@ void Player::movePlayer(float dt) {
         //graphics::playSound(m_state->getFullAssetPath("wing.wav"), 0.5f);
         m_velocity_y = -m_jump_force; // Apply jump force
     }
-         
+
     // Apply gravity
     m_velocity_y += m_gravity * delta_time;
 
