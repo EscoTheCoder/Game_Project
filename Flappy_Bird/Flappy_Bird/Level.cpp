@@ -444,17 +444,6 @@ void Level::checkCollisions() {
     auto it = m_coins.begin();
     while (it != m_coins.end()) {
         if (player->intersect(*it)) {
-            //if (it->getTexture() == "finish_line.png") {
-            //    graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);
-            //    it = m_coins.erase(it); // Remove the finish line
-            //    m_game_over = true; // End the game when the finish line is hit
-            //    return;
-            //}
-            //else if (it->getTexture() == "do_not_stop_image.png") {
-            //    graphics::playSound(m_state->getFullAssetPath("lets_go.wav"), 0.5f);
-            //    it = m_coins.erase(it); // Remove the collected coin
-            //}
-            
             graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);
             loseCoin(); // Decrease the coin count
             it = m_coins.erase(it); // Remove the collected coin

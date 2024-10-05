@@ -1,5 +1,6 @@
 #include "GameState.h"
 #include "Level.h"
+#include "Level_2.h"
 #include "Player.h"
 #include <thread>
 #include <chrono>
@@ -20,7 +21,7 @@ GameState* GameState::getInstance() {
 void GameState::init() {
     // Initialize the level and player using smart pointers
     m_current_level = std::make_unique<Level>("Level0");
-    m_current_level->init();
+    m_current_level->init();;
 
     m_player = std::make_unique<Player>("Bird");
     m_player->init();

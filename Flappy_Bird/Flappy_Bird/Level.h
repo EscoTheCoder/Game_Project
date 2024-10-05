@@ -64,6 +64,7 @@ public:
 
     void resetLevel();        // Method to reset the level
 
+    void start_Level_2();
 
     friend ostream& operator<< (ostream& left, const vector<Coin_Score>& right) {
         

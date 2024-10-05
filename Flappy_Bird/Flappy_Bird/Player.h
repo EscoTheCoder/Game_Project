@@ -37,7 +37,13 @@ public:
     float getWidth() const;
     float getHeight() const;
 
+    void set_velocity_y(float velocity_y) {
+        m_velocity_y = velocity_y;
+    }
 
+    float get_velocity_y() {
+        return m_velocity_y;
+    }
 
 
     void update(float dt) override;
