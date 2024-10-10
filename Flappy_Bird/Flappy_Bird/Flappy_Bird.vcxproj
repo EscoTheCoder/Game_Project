@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Block.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Coin_Score.cpp" />
     <ClCompile Include="Extras.cpp" />
@@ -158,11 +159,13 @@
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Hearts.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Level_2.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pipe.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Block.h" />
     <ClInclude Include="box.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Coin_Score.h" />
@@ -171,8 +174,10 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Hearts.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="Level_2.h" />
     <ClInclude Include="Pipe.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Start_Level.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

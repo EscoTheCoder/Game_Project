@@ -67,7 +67,15 @@ void Player::movePlayer(float dt) {
     }
 }
 
+
 void Player::update(float dt) {
+    /*if (is_dead) {
+        m_brush_player.texture = m_state->getFullAssetPath("ghost.png");
+        
+    }
+    else {
+        movePlayer(dt);
+    }*/
     movePlayer(dt);
 }
 

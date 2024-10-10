@@ -1,8 +1,10 @@
 #pragma once
 
 #include "sgg/graphics.h"
+#include "Start_Level.h"
+#include "Level.h"
+#include "Level_2.h"
 #include <string>
-#include <memory> // For smart pointers
 #include <utility> // For std::pair
 
 class GameState {
@@ -12,9 +14,13 @@ private:
     float m_canvas_width = 6.0f;
     float m_canvas_height = 6.0f;
 
-    // Using smart pointers to manage Player and Level memory
-    std::unique_ptr<class Player> m_player = nullptr;
-    std::unique_ptr<class Level> m_current_level = nullptr;
+    // Raw pointers for Player and Start_Level management
+    class Player* m_player = nullptr;
+    Start_Level* level_1 = nullptr;
+    Start_Level* level_2 = nullptr;
+
+    Start_Level* current_level = nullptr; // Pointer to current level (base class)
+    bool in_level_2 = false; // To keep track of whether you're in Level 2 or not
 
     // Private constructor for Singleton
     GameState();
@@ -39,10 +45,11 @@ public:
     std::string getAssetDir() const;
     std::string getFullAssetPath(const std::string& asset) const;
 
+    void handleGameOver();
+
     // Player getter and setter
     class Player* get_Player() const;
     void set_Player(class Player* player);
 
-    // Destructor is now default, as unique_ptr will handle memory cleanup
-    ~GameState() = default;
+    ~GameState();
 };

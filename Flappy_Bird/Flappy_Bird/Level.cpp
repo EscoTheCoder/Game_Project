@@ -1,14 +1,15 @@
-#include "Level.h"
+ï»¿#include "Level.h"
 #include "GameState.h"
 #include "Coin_Score.h"
 #include "Player.h"
 #include <sgg/graphics.h>
 #include <iostream>
+#include "util.h"
 
 using namespace std;
 
 Level::Level(const string& name) :
-    GameObject(name), m_lives(3) { // Initialize with 3 lives
+    GameObject(name), m_lives(3) , Start_Level("level1") { // Initialize with 3 lives
 }
 
 Level::~Level() {
@@ -33,7 +34,7 @@ void Level::init() {
 
     // Initialize background
     m_brush_background.outline_opacity = 0.0f;
-    m_brush_background.texture = m_state->getFullAssetPath("background.png");
+    m_brush_background.texture = m_state->getFullAssetPath("sky.png");
 
     // Initialize ending background
     m_brush_ending_background.outline_opacity = 0.0f;
@@ -210,10 +211,17 @@ void Level::updateLevelScreen(float dt) {
     // If the game is over, start the timer to delay the ending
     if (m_game_over) {
         m_game_over_timer += dt;
-        if (m_game_over_timer > 2000.0f) { // Wait for 2 seconds (2000ms)
+        // Display game-over prompt for 2 seconds and wait for user input
+        if (m_game_over_timer > 2000.0f) { // After 2 seconds, allow player to continue
+            /*graphics::MouseState mouse;
+            graphics::getMouseState(mouse);
+            if (graphics::getKeyState(graphics::SCANCODE_SPACE) || mouse.button_left_pressed) {
+                m_state->handleGameOver();
+                return;
+            }*/
             graphics::stopMessageLoop();
         }
-        return;
+        return;  // Wait for player input before starting next level
     }
 
 
@@ -323,9 +331,19 @@ void Level::drawLevelScreen() {
         }
     }
     else {
-        // If the game is over, draw the ending background
-        //m_brush_background.outline_opacity = 0.0f;
+        //// If the game is over, draw the ending background and "Press Space to Continue"
+        //float ending_bg_width = w * 0.8f; // Adjust to desired width
+        //float ending_bg_height = h * 0.3f; // Adjust to desired height
+
         graphics::drawRect(offset_x, offset_y, ending_bg_width, ending_bg_height, m_brush_ending_background);
+
+        //graphics::Brush br;
+        //SETCOLOR(br.fill_color,1.0f,1.0f,1.0f);
+        //br.fill_opacity = 1.0f;
+        //br.outline_opacity = 0.0f;
+
+        //graphics::drawText(offset_x - 0.2f * w, offset_y + 0.1f * h, 30.0f, "Press SPACE to continue", br);
+        //m_state->handleGameOver();
     }
 }
 
@@ -339,6 +357,7 @@ void Level::loseLife() {
 
         if (m_lives == 0) {
             m_game_over = true;
+            m_state->handleGameOver();
         }
     }
 }
@@ -387,7 +406,7 @@ void Level::resetLevel() {
     }
 
     // Reset hearts' position at the top-left corner
-    m_hearts.clear(); // Clears but doesn’t free memory
+    m_hearts.clear(); // Clears but doesnâ€™t free memory
 
     float heart_pos_x = 0.3f;  // Positioned near the left edge of the canvas
     float heart_pos_y = 0.3f;  // Positioned near the top edge of the canvas
@@ -402,7 +421,7 @@ void Level::resetLevel() {
     }
 
     // Reset coin_score's position at the top-left corner
-    m_coin_score.clear(); // Clears but doesn’t free memory
+    m_coin_score.clear(); // Clears but doesnâ€™t free memory
 
     // Position the coins at the top-left corner
     float coin_score_pos_x = 0.3f;  // Positioned near the left edge of the canvas
@@ -463,6 +482,7 @@ void Level::checkCollisions() {
                 graphics::playSound(m_state->getFullAssetPath("lets_go.wav"), 0.5f);
                 itt = m_extras.erase(itt); // Remove the finish line
                 m_game_over = true; // End the game when the finish line is hit
+                m_state->handleGameOver();  // Handle the transition or close the game
                 return;
             }
             graphics::playSound(m_state->getFullAssetPath("point.wav"), 0.5f);

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include "Start_Level.h"
 #include "GameObject.h"
 #include "Coin.h"
 #include "Coin_Score.h"
@@ -12,7 +13,7 @@
 
 
 
-class Level : public GameObject {
+class Level : public GameObject, public Start_Level {
 private:
     graphics::Brush m_brush_background;  // Brush for the game background
     graphics::Brush m_brush_ending_background;  // Brush for the ending background
@@ -52,6 +53,8 @@ private:
 
 
 public:
+
+    //bool is_dead = false;
 
     int sum_coins = 0;
 

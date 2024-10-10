@@ -3,6 +3,8 @@
 #include <vector>
 #include "GameObject.h"
 #include "Coin.h"
+#include "Level.h"
+#include "Start_Level.h"
 #include "Coin_Score.h"
 #include "Block.h"
 #include "Player.h"
@@ -12,7 +14,7 @@
 
 
 
-class Level_2 : public GameObject {
+class Level_2 : public GameObject, public Start_Level {
 private:
     graphics::Brush m_brush_background;  // Brush for the game background
     graphics::Brush m_brush_ending_background;  // Brush for the ending background

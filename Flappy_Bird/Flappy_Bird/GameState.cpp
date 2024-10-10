@@ -1,6 +1,4 @@
 #include "GameState.h"
-#include "Level.h"
-#include "Level_2.h"
 #include "Player.h"
 #include <thread>
 #include <chrono>
@@ -13,42 +11,62 @@ GameState::GameState() {
 }
 
 GameState* GameState::getInstance() {
-    // Thread-safe Singleton pattern in C++11
     static GameState instance;
     return &instance;
 }
 
 void GameState::init() {
-    // Initialize the level and player using smart pointers
-    m_current_level = std::make_unique<Level>("Level0");
-    m_current_level->init();;
+    // Initialize levels
+    level_1 = new Level("Level1");
+    level_1->init();
 
-    m_player = std::make_unique<Player>("Bird");
+    level_2 = new Level_2("Level2");  // Level_2 has its own constructor
+    level_2->init();
+
+    // Set current level to level 1 initially
+    current_level = level_1;
+
+    // Initialize player
+    m_player = new Player("Bird");
     m_player->init();
 
+    // Preload assets
     graphics::preloadBitmaps(getAssetDir());
 }
 
 void GameState::draw() {
-    // Draw the level
-    if (m_current_level) {
-        m_current_level->draw();
+    if (current_level) {
+        current_level->draw();
     }
 }
 
 void GameState::update(float dt) {
-    if (dt > 500) { // Ignore long delays
-        return;
+    if (dt > 500) {
+        return; // Ignore long delays
     }
 
     float sleep_time = max(0.0f, 17.0f - dt);
     this_thread::sleep_for(chrono::duration<float, milli>(sleep_time));
 
-    if (m_current_level) {
-        m_current_level->update(dt);
+    if (current_level) {
+        current_level->update(dt);
     }
 
     m_debugging = graphics::getKeyState(graphics::SCANCODE_0);
+}
+
+void GameState::handleGameOver() {
+    if (in_level_2) {
+        // If already in level 2, close the game window
+        graphics::stopMessageLoop(); // Close the game
+    }
+    else {
+        // Switch to level 2
+        in_level_2 = true;
+
+        // Switch to Level 2
+        current_level = level_2; // No cast needed as Level_2 is derived from Start_Level
+    }
 }
 
 std::pair<float, float> GameState::getCanvasDimensions() const {
@@ -64,10 +82,19 @@ std::string GameState::getFullAssetPath(const std::string& asset) const {
 }
 
 class Player* GameState::get_Player() const {
-    return m_player.get();
+    return m_player;
 }
 
 void GameState::set_Player(class Player* player) {
-    // Use unique_ptr's reset to change the player
-    m_player.reset(player);
+    if (m_player) {
+        delete m_player;
+    }
+    m_player = player;
+}
+
+GameState::~GameState() {
+    // Clean up dynamically allocated memory
+    delete level_1;
+    delete level_2;
+    delete m_player;
 }

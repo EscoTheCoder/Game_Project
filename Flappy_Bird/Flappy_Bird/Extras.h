@@ -13,6 +13,9 @@ private:
     std::string m_texture;
     const float m_extras_speed = 5.0f;
 
+    float m_initial_pos_x;
+    float m_initial_pos_y;
+
 public:
     // Constructor
     Extras(float pos_x, float pos_y, float width, float height, const std::string& texture);
@@ -28,6 +31,9 @@ public:
     void update(float dt) override;
     void init() override;
     void draw() override;
+
+    void reset();
+
     void setTexture(const std::string& texture);
     std::string getTexture();
     void move(float dt);

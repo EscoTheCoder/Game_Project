@@ -8,7 +8,7 @@
 using namespace std;
 
 Level_2::Level_2(const string& name) :
-    GameObject(name), m_lives(3) { // Initialize with 3 lives
+    GameObject(name), m_lives(3), Start_Level("level2") { // Initialize with 3 lives
 }
 
 Level_2::~Level_2() {

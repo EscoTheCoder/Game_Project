@@ -45,6 +45,8 @@ public:
         return m_velocity_y;
     }
 
+    bool is_dead = false;
+
 
     void update(float dt) override;
     void init() override;

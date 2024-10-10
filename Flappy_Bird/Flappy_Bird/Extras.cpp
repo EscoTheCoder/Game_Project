@@ -35,6 +35,10 @@ void Extras::init() {
     m_extras_brush_debug.fill_opacity = 0.1f;
     SETCOLOR(m_extras_brush_debug.fill_color, 1.0f, 0.0f, 0.0f);
     SETCOLOR(m_extras_brush_debug.outline_color, 1.0f, 0.0f, 0.0f);
+
+    // Αποθηκεύουμε την αρχική θέση κατά την αρχικοποίηση
+    m_initial_pos_x = m_pos_x;
+    m_initial_pos_y = m_pos_y;
 }
 
 void Extras::update(float dt) {
@@ -47,6 +51,12 @@ void Extras::draw() {
     if (m_state->m_debugging) {
         graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_extras_brush_debug);
     }
+}
+
+void Extras::reset() {
+    // Επαναφορά της θέσης του σωλήνα στην αρχική κατάσταση
+    m_pos_x = m_initial_pos_x;
+    m_pos_y = m_initial_pos_y;
 }
 
 void Extras::move(float dt) {
