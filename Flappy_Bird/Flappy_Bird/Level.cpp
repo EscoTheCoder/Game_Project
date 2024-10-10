@@ -135,7 +135,7 @@ void Level::init() {
     }
 
     //m_extras.emplace_back(75.0f, 3.2f, 2.0f, 5.0f, "do_not_stop_image.png");
-    m_extras.emplace_back(75.0f, 2.5f, 2.0f, 15.0f, "finish_line.png");
+    m_extras.emplace_back(70.0f, 2.5f, 2.0f, 15.0f, "finish_line.png");
 
     for (auto& extras : m_extras) {
         extras.init();
@@ -400,7 +400,7 @@ void Level::resetLevel() {
 
     // Reset extras
     //m_extras.emplace_back(75.0f, 3.2f, 2.0f, 5.0f, "do_not_stop_image.png");
-    m_extras.emplace_back(75.0f, 2.5f, 2.0f, 15.0f, "finish_line.png");
+    m_extras.emplace_back(70.0f, 2.5f, 2.0f, 15.0f, "finish_line.png");
     for (auto& extras : m_extras) {
         extras.init();
     }

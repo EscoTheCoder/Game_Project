@@ -41,7 +41,7 @@ void Block::reset() {
 
 void Block::move(float dt) {
     // Move the pipe to the left as time passes
-    m_pos_x -= m_pipe_speed * (dt / 1000.0f); // Adjust the pipe's speed directly
+    m_pos_x -= m_block_speed * (dt / 1000.0f); // Adjust the pipe's speed directly
 }
 
 void Block::setTexture(const std::string& texture) {

@@ -1,14 +1,14 @@
 #include "Level_2.h"
 #include "GameState.h"
 #include "Coin_Score.h"
-#include "Player.h"
+#include "Player_Level_2.h"
 #include <sgg/graphics.h>
 #include <iostream>
 
 using namespace std;
 
 Level_2::Level_2(const string& name) :
-    GameObject(name), m_lives(3), Start_Level("level2") { // Initialize with 3 lives
+    GameObject(name), m_lives(3), Start_Level("Level2") { // Initialize with 3 lives
 }
 
 Level_2::~Level_2() {
@@ -112,8 +112,7 @@ void Level_2::init() {
 
 
     // Initialize coins
-    m_coins.emplace_back(21.0f, 2.5f, 0.5f, 0.5f, "coin.png");
-    m_coins.emplace_back(32.0f, 3.2f, 0.5f, 0.5f, "coin.png");
+    m_coins.emplace_back(21.0f, 3.5f, 0.5f, 0.5f, "coin.png");
     m_coins.emplace_back(32.0f, 3.2f, 0.5f, 0.5f, "coin.png");
     m_coins.emplace_back(62.0f, 3.2f, 0.5f, 0.5f, "coin.png");
 
@@ -122,7 +121,7 @@ void Level_2::init() {
     }
 
     //m_extras.emplace_back(75.0f, 3.2f, 2.0f, 5.0f, "do_not_stop_image.png");
-    m_extras.emplace_back(75.0f, 2.5f, 2.0f, 2.0f, "portal.png");
+    m_extras.emplace_back(70.0f, 2.5f, 2.0f, 2.0f, "portal.png");
 
     for (auto& extras : m_extras) {
         extras.init();
@@ -205,9 +204,9 @@ void Level_2::updateLevelScreen(float dt) {
     }
 
 
-    // Update player
-    if (m_state->get_Player()->isActive()) {
-        m_state->get_Player()->update(dt);
+    // Update player_2
+    if (m_state->get_Player_2()->isActive()) {
+        m_state->get_Player_2()->update(dt);
     }
 
     // Update pipes
@@ -281,8 +280,8 @@ void Level_2::drawLevelScreen() {
 
     if (!m_game_over) {
         // Draw player
-        if (m_state->get_Player()->isActive()) {
-            m_state->get_Player()->draw();
+        if (m_state->get_Player_2()->isActive()) {
+            m_state->get_Player_2()->draw();
         }
 
         // Draw pipes
@@ -347,9 +346,9 @@ void Level_2::loseCoin() {
 
 
 void Level_2::resetLevel() {
-    // Reset player and other objects (existing code)
+    // Reset player_2 and other objects (existing code)
 
-    Player* player = m_state->get_Player();
+    Player_Level_2* player = m_state->get_Player_2();
     player->reset();
 
     // Reset pipes
@@ -359,8 +358,7 @@ void Level_2::resetLevel() {
 
     // Reset coins
     m_coins.clear();
-    m_coins.emplace_back(21.0f, 2.5f, 0.5f, 0.5f, "coin.png");
-    m_coins.emplace_back(32.0f, 3.2f, 0.5f, 0.5f, "coin.png");
+    m_coins.emplace_back(21.0f, 3.5f, 0.5f, 0.5f, "coin.png");
     m_coins.emplace_back(32.0f, 3.2f, 0.5f, 0.5f, "coin.png");
     m_coins.emplace_back(62.0f, 3.2f, 0.5f, 0.5f, "coin.png");
 
@@ -411,7 +409,7 @@ void Level_2::resetLevel() {
 void Level_2::checkCollisions() {
     if (m_game_paused || m_game_over) return;
 
-    Player* player = m_state->get_Player();
+    Player_Level_2* player = m_state->get_Player_2();
     if (!player) {
         std::cerr << "Player not initialized!" << std::endl;
         return;

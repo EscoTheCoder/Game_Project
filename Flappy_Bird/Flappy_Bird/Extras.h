@@ -11,7 +11,7 @@ private:
     graphics::Brush m_extras_brush;
     graphics::Brush m_extras_brush_debug;
     std::string m_texture;
-    const float m_extras_speed = 5.0f;
+    const float m_extras_speed = 2.0f;
 
     float m_initial_pos_x;
     float m_initial_pos_y;

@@ -7,16 +7,20 @@
       "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Level_2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Level_2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Level_2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Player_Level_2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Player_Level_2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Level.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Level.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Start_Level.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Start_Level.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Extras.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Extras.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Level_2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Level_2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\GameState.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -31,12 +35,28 @@
       "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Level.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Block.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Block.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Extras.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Extras.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Block.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Block.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Player_Level_2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Player_Level_2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Start_Level.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Start_Level.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Extras.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -61,10 +81,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E2165420-1421-435A-804A-3D3FEEF71859}|Flappy_Bird\\Flappy_Bird.vcxproj|solutionrelative:Flappy_Bird\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 318,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,7 +98,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "Level.cpp",
+              "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Level.cpp",
+              "RelativeDocumentMoniker": "Flappy_Bird\\Level.cpp",
+              "ToolTip": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Level.cpp",
+              "RelativeToolTip": "Flappy_Bird\\Level.cpp",
+              "ViewState": "AgIAAH8BAAAAAAAAAIA8wJIBAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-26T18:35:28.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Block.h",
+              "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Block.h",
+              "RelativeDocumentMoniker": "Flappy_Bird\\Block.h",
+              "ToolTip": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Block.h",
+              "RelativeToolTip": "Flappy_Bird\\Block.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-10T11:01:22.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Player_Level_2.h",
+              "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Player_Level_2.h",
+              "RelativeDocumentMoniker": "Flappy_Bird\\Player_Level_2.h",
+              "ToolTip": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Player_Level_2.h",
+              "RelativeToolTip": "Flappy_Bird\\Player_Level_2.h",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-10T10:37:37.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Player_Level_2.cpp",
+              "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Player_Level_2.cpp",
+              "RelativeDocumentMoniker": "Flappy_Bird\\Player_Level_2.cpp",
+              "ToolTip": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Player_Level_2.cpp",
+              "RelativeToolTip": "Flappy_Bird\\Player_Level_2.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-10T10:37:45.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Start_Level.h",
               "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Start_Level.h",
               "RelativeDocumentMoniker": "Flappy_Bird\\Start_Level.h",
@@ -95,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Level_2.h",
               "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Level_2.h",
               "RelativeDocumentMoniker": "Flappy_Bird\\Level_2.h",
@@ -114,40 +182,40 @@
               "RelativeDocumentMoniker": "Flappy_Bird\\Level_2.cpp",
               "ToolTip": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Level_2.cpp",
               "RelativeToolTip": "Flappy_Bird\\Level_2.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAF4BAAAAAAAAAAAAAGoBAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-10T09:27:45.098Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "GameState.h",
               "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\GameState.h",
               "RelativeDocumentMoniker": "Flappy_Bird\\GameState.h",
               "ToolTip": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\GameState.h",
               "RelativeToolTip": "Flappy_Bird\\GameState.h",
-              "ViewState": "AgIAABYAAAAAAAAAAAA8wB0AAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-10-03T17:28:25.097Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "GameState.cpp",
               "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\GameState.cpp",
               "RelativeDocumentMoniker": "Flappy_Bird\\GameState.cpp",
               "ToolTip": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\GameState.cpp",
               "RelativeToolTip": "Flappy_Bird\\GameState.cpp",
-              "ViewState": "AgIAADQAAAAAAAAAAAA8wBYAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-03T20:12:29.156Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Level.h",
               "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Level.h",
               "RelativeDocumentMoniker": "Flappy_Bird\\Level.h",
@@ -160,20 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Level.cpp",
-              "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Level.cpp",
-              "RelativeDocumentMoniker": "Flappy_Bird\\Level.cpp",
-              "ToolTip": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Level.cpp",
-              "RelativeToolTip": "Flappy_Bird\\Level.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-26T18:35:28.652Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "Player.cpp",
               "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Player.cpp",
               "RelativeDocumentMoniker": "Flappy_Bird\\Player.cpp",
@@ -185,7 +240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 18,
               "Title": "util.h",
               "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\util.h",
               "RelativeDocumentMoniker": "Flappy_Bird\\util.h",
@@ -197,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "Pipe.cpp",
               "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Pipe.cpp",
               "RelativeDocumentMoniker": "Flappy_Bird\\Pipe.cpp",
@@ -209,7 +264,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
+              "Title": "Extras.h",
+              "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Extras.h",
+              "RelativeDocumentMoniker": "Flappy_Bird\\Extras.h",
+              "ToolTip": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Extras.h",
+              "RelativeToolTip": "Flappy_Bird\\Extras.h",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-03T19:59:40.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Block.cpp",
+              "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Block.cpp",
+              "RelativeDocumentMoniker": "Flappy_Bird\\Block.cpp",
+              "ToolTip": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Block.cpp",
+              "RelativeToolTip": "Flappy_Bird\\Block.cpp",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-10T11:01:36.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\main.cpp",
               "RelativeDocumentMoniker": "Flappy_Bird\\main.cpp",
@@ -217,12 +298,24 @@
               "RelativeToolTip": "Flappy_Bird\\main.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-08T22:55:27.863Z",
+              "WhenOpened": "2024-10-08T22:55:27.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "GameObject.h",
+              "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\GameObject.h",
+              "RelativeDocumentMoniker": "Flappy_Bird\\GameObject.h",
+              "ToolTip": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\GameObject.h",
+              "RelativeToolTip": "Flappy_Bird\\GameObject.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-03T17:39:35.132Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "Extras.cpp",
               "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Extras.cpp",
               "RelativeDocumentMoniker": "Flappy_Bird\\Extras.cpp",
@@ -234,19 +327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Extras.h",
-              "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Extras.h",
-              "RelativeDocumentMoniker": "Flappy_Bird\\Extras.h",
-              "ToolTip": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Extras.h",
-              "RelativeToolTip": "Flappy_Bird\\Extras.h",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-10-03T19:59:40.618Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 19,
               "Title": "Player.h",
               "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\Player.h",
               "RelativeDocumentMoniker": "Flappy_Bird\\Player.h",
@@ -258,19 +339,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "GameObject.h",
-              "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\GameObject.h",
-              "RelativeDocumentMoniker": "Flappy_Bird\\GameObject.h",
-              "ToolTip": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\GameObject.h",
-              "RelativeToolTip": "Flappy_Bird\\GameObject.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-10-03T17:39:35.132Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "GameObject.cpp",
               "DocumentMoniker": "C:\\Users\\nikolas\\Desktop\\Game_Project\\Flappy_Bird\\Flappy_Bird\\GameObject.cpp",
               "RelativeDocumentMoniker": "Flappy_Bird\\GameObject.cpp",

@@ -12,7 +12,7 @@ private:
     graphics::Brush m_pipe_brush_debug;   // Brush for drawing the debug outline
 
     string m_texture;                // Texture file for the pipe
-    const float m_pipe_speed = 2.0f;      // Speed at which the pipe moves left
+    const float m_block_speed = 2.0f;      // Speed at which the pipe moves left
 
     float m_initial_pos_x;
     float m_initial_pos_y;

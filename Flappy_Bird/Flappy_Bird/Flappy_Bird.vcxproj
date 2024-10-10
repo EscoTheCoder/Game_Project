@@ -163,6 +163,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pipe.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Player_Level_2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Block.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="Level_2.h" />
     <ClInclude Include="Pipe.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Player_Level_2.h" />
     <ClInclude Include="Start_Level.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>

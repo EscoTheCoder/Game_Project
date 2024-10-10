@@ -16,6 +16,7 @@ private:
 
     // Raw pointers for Player and Start_Level management
     class Player* m_player = nullptr;
+    class Player_Level_2* m_player_2 = nullptr;
     Start_Level* level_1 = nullptr;
     Start_Level* level_2 = nullptr;
 
@@ -50,6 +51,10 @@ public:
     // Player getter and setter
     class Player* get_Player() const;
     void set_Player(class Player* player);
+
+    // Player_2 getter and setter
+    class Player_Level_2* get_Player_2() const;
+    void set_Player_2(class Player_Level_2* player);
 
     ~GameState();
 };
